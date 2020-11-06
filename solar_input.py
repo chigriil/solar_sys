@@ -57,7 +57,7 @@ def parse_star_parameters(line, star):
     _, radius, color, mass, x, y, Vx, Vy = line.strip().split()
 
     star.R = float(radius)
-    star.color = str(color)
+    star.color = str(color).lower()
     star.m = float(mass)
     star.x = float(x)
     star.y = float(y)
@@ -115,17 +115,16 @@ def write_space_objects_data_to_file(output_filename, space_objects):
     """
     with open(output_filename, 'w') as out_file:
         for obj in space_objects:
-            if __name__ == '__main__':
-                out_file.write('{type_} {radius} {color} {mass} {x} {y} {Vx} {Vy}\n'.format(
-                    type_=obj.type.title(),
-                    radius=obj.R,
-                    color=obj.color.lower(),
-                    mass=obj.m,
-                    x=obj.x,
-                    y=obj.y,
-                    Vx=obj.Vx,
-                    Vy=obj.Vy
-                ))
+            out_file.write('{type_} {radius} {color} {mass} {x} {y} {Vx} {Vy}\n'.format(
+                type_=obj.type.title(),
+                radius=obj.R,
+                color=obj.color.lower(),
+                mass=obj.m,
+                x=obj.x,
+                y=obj.y,
+                Vx=obj.Vx,
+                Vy=obj.Vy
+            ))
 
 
 if __name__ == "__main__":
