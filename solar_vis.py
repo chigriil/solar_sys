@@ -5,7 +5,8 @@ import pygame as pg
 
 """Модуль визуализации.
 Нигде, кроме этого модуля, не используются экранные координаты объектов.
-Функции, создающие гaрафические объекты и перемещающие их на экране, принимают физические координаты
+Функции, создающие гaрафические объекты и перемещающие их на экране, 
+принимают физические координаты
 """
 
 header_font = "Arial-16"
@@ -26,7 +27,8 @@ scale_factor = 1
 
 
 def calculate_scale_factor(max_distance):
-    """Вычисляет значение глобальной переменной **scale_factor** по данной характерной длине"""
+    """Вычисляет значение глобальной переменной **scale_factor**
+    по данной характерной длине"""
     global scale_factor
     scale_factor = 0.5 * min(window_height, window_width) / max_distance
     print('Scale factor:', scale_factor)
@@ -84,5 +86,6 @@ class DrawableObject:
 
     def draw(self, surface):
         pg.draw.circle(surface, self.obj.color,
-                       (window_width / 2 + self.obj.x * scale_factor, window_height / 2 + self.obj.y * scale_factor),
+                       (window_width / 2 + self.obj.x * scale_factor,
+                        window_height / 2 + self.obj.y * scale_factor),
                        self.obj.R)
