@@ -114,7 +114,7 @@ def init_ui(screen):
     button_play = thorpy.make_button("Play", func=start_execution)
     timer = thorpy.OneLineText("Seconds passed")
 
-    button_load = thorpy.make_button(text="Load a file", func=open_file)
+    button_load = thorpy.make_button(text="Load/open a file", func=open_file)
 
     box = thorpy.Box(elements=[
         slider,
