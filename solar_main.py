@@ -1,14 +1,15 @@
 # coding: utf-8
 # license: GPLv3
 
-import pygame as pg
-from solar_vis import *
-from solar_model import *
-from solar_input import *
-from solar_objects import *
-import thorpy
+import os
 import time
+
 import numpy as np
+import thorpy
+
+from solar_input import *
+from solar_model import *
+from solar_vis import *
 
 timer = None
 
@@ -27,6 +28,15 @@ time_scale = 1000.0
 
 space_objects = []
 """Список космических объектов."""
+
+simulations_path = 'simulations'
+"""Папка с фалами симуляций"""
+
+file_name1 = ''
+"""Путь до файла с симуляцией"""
+
+if not os.path.exists(simulations_path):
+    os.mkdir(simulations_path)
 
 
 def execution(delta):
@@ -61,14 +71,6 @@ def stop_execution():
     """
     global alive
     alive = False
-
-
-def file_name():
-    """
-    Считывает название файла
-    """
-    global file_name1
-    file_name1 = input()
 
 
 def open_file():
@@ -154,12 +156,11 @@ def main():
     global start_button
     global perform_execution
     global timer
+    global file_name1
 
     print('Modelling started!')
-    print('We have three files for simulations: double_star.txt, '
-          'one_satellite.txt, solar_system.txt')
-    print('Input file name that you like')
-    file_name()
+
+    file_name1 = file_name(simulations_path)
     physical_time = 0
 
     pg.init()

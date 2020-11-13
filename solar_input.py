@@ -3,6 +3,30 @@
 
 from solar_objects import Star, Planet
 from solar_vis import DrawableObject
+import os
+
+
+def file_name(simulations_path):
+    """
+    Считывает название файла
+    """
+    simulation_files = [os.path.join(simulations_path, file) for file in os.listdir(simulations_path)]
+
+    print(f'We have {len(simulation_files)} '
+          f'{"file" if len(simulation_files) == 1 else "files"}'
+          f' for simulations:')
+
+    for number, file in enumerate(simulation_files):
+        print(f'{number}) {file}')
+
+    while True:
+        try:
+            file_name1 = simulation_files[int(input('Input file number that you like: '))]
+        except:
+            print('Input correct file number')
+        else:
+            break
+    return file_name1
 
 
 def read_space_objects_data_from_file(input_filename):
